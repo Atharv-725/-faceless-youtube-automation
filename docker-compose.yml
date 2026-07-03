@@ -1,0 +1,20 @@
+﻿services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=Asia/Kolkata
+      - TZ=Asia/Kolkata
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+  media-tools:
+    build: ./media-tools
+    restart: always
+    ports:
+      - "8000:8000"
+
+volumes:
+  n8n_data:
